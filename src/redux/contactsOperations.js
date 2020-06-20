@@ -1,36 +1,29 @@
-import Axios from "axios";
+import  {get, post, deleteItem} from "./api";
 import {
   getContactsStart,
-  getContactsSucess,
-  getContactsError,
+  // getContactsSucess,
+  // getContactsError,
   postContactStart,
-  postContactSuccess,
-  postContactError,
+  // postContactSuccess,
+  // postContactError,
   deleteContactStart,
-  deleteContactSuccess,
-  deleteContactError,
+  // deleteContactSuccess,
+  // deleteContactError,
 } from "./contactsActions";
 
 export const fetchContacts = () => (dispatch) => {
   dispatch(getContactsStart());
-
-  Axios.get("http://localhost:4000/contacts")
-    .then(({ data }) => dispatch(getContactsSucess(data)))
-    .catch((error) => dispatch(getContactsError(error)));
+  get()
 };
 
 export const postContact = (contact) => (dispatch) => {
   dispatch(postContactStart());
-
-  Axios.post("http://localhost:4000/contacts", contact)
-    .then(({ data }) => dispatch(postContactSuccess(data)))
-    .catch((error) => dispatch(postContactError(error)));
+  post()
 };
 
 export const deleteContact = (id) => (dispatch) => {
   dispatch(deleteContactStart());
-
-  Axios.delete(`http://localhost:4000/contacts/${id}`)
-    .then(() => dispatch(deleteContactSuccess(id)))
-    .catch((error) => dispatch(deleteContactError(error)));
+  deleteItem()
 };
+
+

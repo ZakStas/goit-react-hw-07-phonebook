@@ -1,29 +1,18 @@
-import  {get, post, deleteItem} from "./api";
+import { get, post, deleteItem } from "./api";
 import {
   getContactsStart,
-  // getContactsSucess,
-  // getContactsError,
   postContactStart,
-  // postContactSuccess,
-  // postContactError,
   deleteContactStart,
-  // deleteContactSuccess,
-  // deleteContactError,
 } from "./contactsActions";
-
-export const fetchContacts = () => (dispatch) => {
+export const fetchContacts = () => dispatch => {
   dispatch(getContactsStart());
-  get()
+  dispatch(get());
 };
-
-export const postContact = (contact) => (dispatch) => {
+export const postContact = contact => dispatch => {
   dispatch(postContactStart());
-  post()
+  dispatch(post(contact));
 };
-
-export const deleteContact = (id) => (dispatch) => {
+export const deleteContact = id => dispatch => {
   dispatch(deleteContactStart());
-  deleteItem()
+  dispatch(deleteItem(id));
 };
-
-
